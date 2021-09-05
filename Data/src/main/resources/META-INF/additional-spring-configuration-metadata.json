@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "resource.url",
+      "type": "java.lang.String",
+      "description": "Description for resource.url."
+  }
+] }
