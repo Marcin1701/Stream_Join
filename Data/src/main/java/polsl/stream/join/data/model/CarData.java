@@ -202,4 +202,28 @@ public class CarData {
     public void setMsrp(String msrp) {
         this.msrp = msrp;
     }
+
+    @Override
+    public String toString() {
+        return "CarData{" +
+                "make='" + make + '\'' +
+                ", model='" + model + '\'' +
+                ", year='" + year + '\'' +
+                ", engineFuelType='" + engineFuelType + '\'' +
+                ", hp='" + hp + '\'' +
+                ", engineCylinders='" + engineCylinders + '\'' +
+                ", transmission='" + transmission + '\'' +
+                ", type='" + type + '\'' +
+                ", driven='" + driven + '\'' +
+                ", numberOfDoors='" + numberOfDoors + '\'' +
+                ", market='" + market + '\'' +
+                ", vehicleSize='" + vehicleSize + '\'' +
+                ", vehicleStyle='" + vehicleStyle + '\'' +
+                ", highway='" + highway + '\'' +
+                ", mpg='" + mpg + '\'' +
+                ", cityMpg='" + cityMpg + '\'' +
+                ", popularity='" + popularity + '\'' +
+                ", msrp='" + msrp + '\'' +
+                '}';
+    }
 }

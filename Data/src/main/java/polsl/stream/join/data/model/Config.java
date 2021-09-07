@@ -14,12 +14,12 @@ public class Config {
     private String secondFile;
 
     /**
-     * Time between stream inits
+     * Time between stream inits in ms
      */
     private Integer dataLifespan;
 
     /**
-     * Automatic data join simulation flag
+     * Automatic simulation
      */
     private Boolean automatic;
 

@@ -1,6 +1,7 @@
 package polsl.stream.join.data;
 
 import org.springframework.web.bind.annotation.*;
+import polsl.stream.join.data.algorithm.StreamModels;
 import polsl.stream.join.data.model.Config;
 
 import java.util.List;
@@ -24,7 +25,7 @@ public class InitController {
     }
 
     @GetMapping("/fileData/{filename}")
-    public List<?> getFileData(@PathVariable String filename) {
+    public StreamModels getFileData(@PathVariable String filename) {
         return this.csvReader.readDataFromFile(filename);
     }
 

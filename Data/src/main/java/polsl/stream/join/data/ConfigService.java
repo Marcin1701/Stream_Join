@@ -10,15 +10,20 @@ import java.util.List;
 @Service
 public class ConfigService {
 
+    private final CsvReader csvReader;
+
     private final List<String> files = Arrays.stream(new String[]
             { "INNER" }).toList();
+
+    public ConfigService(CsvReader csvReader) {
+        this.csvReader = csvReader;
+    }
 
     public List<String> getJoinTypes() {
         return this.files;
     }
 
     public void startAlgorithm(Config configClass) {
-        var algorithmClass = new AlgorithmClass();
-        algorithmClass.start(configClass);
+        var algorithmClass = new AlgorithmClass(configClass, csvReader);
     }
 }
