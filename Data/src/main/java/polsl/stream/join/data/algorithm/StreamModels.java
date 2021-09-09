@@ -66,6 +66,30 @@ public class StreamModels {
         this.testIncomeStream = testIncomeStream;
     }
 
+    public Stream<?> findActiveStream() {
+        if (this.carDataStream != null) {
+            return this.carDataStream;
+        }
+        else if (this.carDataSalesStream != null) {
+            return this.carDataSalesStream;
+        }
+        else if (this.foodChoicesStream != null) {
+            return this.foodChoicesStream;
+        }
+        else if (this.foodPreferenceStream != null) {
+            return this.foodPreferenceStream;
+        }
+        else if (this.koreaIncomeStream != null) {
+            return this.koreaIncomeStream;
+        }
+        else if (this.testIncomeStream != null) {
+            return this.testIncomeStream;
+        }
+        else {
+            return null;
+        }
+    }
+
     @Override
     public String toString() {
         var info = "Stream models definition existance:";

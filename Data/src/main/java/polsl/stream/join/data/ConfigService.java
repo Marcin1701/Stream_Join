@@ -1,6 +1,8 @@
 package polsl.stream.join.data;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 import polsl.stream.join.data.algorithm.AlgorithmClass;
 import polsl.stream.join.data.model.Config;
 
@@ -13,7 +15,7 @@ public class ConfigService {
     private final CsvReader csvReader;
 
     private final List<String> files = Arrays.stream(new String[]
-            { "INNER" }).toList();
+            { "INNER", "RIGHT OUTER", "LEFT OUTER", "THETA" }).toList();
 
     public ConfigService(CsvReader csvReader) {
         this.csvReader = csvReader;
@@ -23,7 +25,12 @@ public class ConfigService {
         return this.files;
     }
 
-    public void startAlgorithm(Config configClass) {
+    public List<String> startAlgorithm(Config configClass) {
         var algorithmClass = new AlgorithmClass(configClass, csvReader);
+        var returned = algorithmClass.initializeObservable();
+        if (returned == null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Csv files mismatch");
+        }
+       return returned.map(Object::toString).toList();
     }
 }

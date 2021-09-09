@@ -35,7 +35,7 @@ public class InitController {
     }
 
     @PostMapping
-    public void startCalculation(@RequestBody Config configClass) {
-        this.configService.startAlgorithm(configClass);
+    public List<String> startCalculation(@RequestBody Config configClass) {
+        return this.configService.startAlgorithm(configClass);
     }
 }

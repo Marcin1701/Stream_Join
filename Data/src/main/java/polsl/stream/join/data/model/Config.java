@@ -1,6 +1,5 @@
 package polsl.stream.join.data.model;
 
-
 public class Config {
 
     /**
@@ -28,6 +27,11 @@ public class Config {
      */
     private String joinType;
 
+    /**
+     * Name of the column to join
+     */
+    private String joinColumn;
+
     public String getFirstFile() {
         return firstFile;
     }
@@ -46,5 +50,33 @@ public class Config {
 
     public String getJoinType() {
         return joinType;
+    }
+
+    public void setFirstFile(String firstFile) {
+        this.firstFile = firstFile;
+    }
+
+    public void setSecondFile(String secondFile) {
+        this.secondFile = secondFile;
+    }
+
+    public void setDataLifespan(Integer dataLifespan) {
+        this.dataLifespan = dataLifespan;
+    }
+
+    public void setAutomatic(Boolean automatic) {
+        this.automatic = automatic;
+    }
+
+    public void setJoinType(String joinType) {
+        this.joinType = joinType;
+    }
+
+    public String getJoinColumn() {
+        return joinColumn;
+    }
+
+    public void setJoinColumn(String joinColumn) {
+        this.joinColumn = joinColumn;
     }
 }
