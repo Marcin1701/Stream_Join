@@ -180,25 +180,12 @@ public class CarDataSales {
         this.powerPerfFactor = powerPerfFactor;
     }
 
-    @Override
-    public String toString() {
-        return "CarDataSales{" +
-                "manufacturer='" + manufacturer + '\'' +
-                ", model='" + model + '\'' +
-                ", salesINThousands='" + salesINThousands + '\'' +
-                ", yearResaleValue='" + yearResaleValue + '\'' +
-                ", vehicleType='" + vehicleType + '\'' +
-                ", priceInThousands='" + priceInThousands + '\'' +
-                ", engineSize='" + engineSize + '\'' +
-                ", hp='" + hp + '\'' +
-                ", wheelbase='" + wheelbase + '\'' +
-                ", width='" + width + '\'' +
-                ", length='" + length + '\'' +
-                ", curbWeight='" + curbWeight + '\'' +
-                ", fuelCapacity='" + fuelCapacity + '\'' +
-                ", fuelEfficiency='" + fuelEfficiency + '\'' +
-                ", latestLaunch='" + latestLaunch + '\'' +
-                ", powerPerfFactor='" + powerPerfFactor + '\'' +
-                '}';
+    public String get(String keyColumn) {
+        return " CarDataSales.csv: " + switch (keyColumn) {
+            case "manufacturer" -> manufacturer;
+            case "model" -> model;
+            case "hp" -> hp;
+            default -> "";
+        } + " Model: " + model;
     }
 }

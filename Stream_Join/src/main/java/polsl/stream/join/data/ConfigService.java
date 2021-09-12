@@ -12,13 +12,13 @@ import java.util.List;
 @Service
 public class ConfigService {
 
-    private final CsvReader csvReader;
+    private final AlgorithmClass algorithmClass;
 
     private final List<String> files = Arrays.stream(new String[]
             { "INNER", "RIGHT OUTER", "LEFT OUTER", "THETA" }).toList();
 
-    public ConfigService(CsvReader csvReader) {
-        this.csvReader = csvReader;
+    public ConfigService(AlgorithmClass algorithmClass) {
+        this.algorithmClass = algorithmClass;
     }
 
     public List<String> getJoinTypes() {
@@ -26,8 +26,7 @@ public class ConfigService {
     }
 
     public List<String> startAlgorithm(Config configClass) {
-        var algorithmClass = new AlgorithmClass(configClass, csvReader);
-        var returned = algorithmClass.initializeObservable();
+        var returned = algorithmClass.initializeFlux(configClass);
         if (returned == null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Csv files mismatch");
         }

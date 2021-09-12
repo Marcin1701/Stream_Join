@@ -26,36 +26,30 @@ public class CarData {
     private String transmission;
 
     @CsvBindByPosition(position = 7)
-    private String type;
-
-    @CsvBindByPosition(position = 8)
     private String driven;
 
-    @CsvBindByPosition(position = 9)
+    @CsvBindByPosition(position = 8)
     private String numberOfDoors;
 
-    @CsvBindByPosition(position = 10)
+    @CsvBindByPosition(position = 9)
     private String market;
 
-    @CsvBindByPosition(position = 11)
+    @CsvBindByPosition(position = 10)
     private String vehicleSize;
 
-    @CsvBindByPosition(position = 12)
+    @CsvBindByPosition(position = 11)
     private String vehicleStyle;
 
-    @CsvBindByPosition(position = 13)
+    @CsvBindByPosition(position = 12)
     private String highway;
 
-    @CsvBindByPosition(position = 14)
-    private String mpg;
-
-    @CsvBindByPosition(position = 15)
+    @CsvBindByPosition(position = 13)
     private String cityMpg;
 
-    @CsvBindByPosition(position = 16)
+    @CsvBindByPosition(position = 14)
     private String popularity;
 
-    @CsvBindByPosition(position = 17)
+    @CsvBindByPosition(position = 15)
     private String msrp;
 
 
@@ -115,14 +109,6 @@ public class CarData {
         this.transmission = transmission;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
     public String getDriven() {
         return driven;
     }
@@ -171,14 +157,6 @@ public class CarData {
         this.highway = highway;
     }
 
-    public String getMpg() {
-        return mpg;
-    }
-
-    public void setMpg(String mpg) {
-        this.mpg = mpg;
-    }
-
     public String getCityMpg() {
         return cityMpg;
     }
@@ -203,27 +181,19 @@ public class CarData {
         this.msrp = msrp;
     }
 
-    @Override
-    public String toString() {
-        return "CarData{" +
-                "make='" + make + '\'' +
-                ", model='" + model + '\'' +
-                ", year='" + year + '\'' +
-                ", engineFuelType='" + engineFuelType + '\'' +
-                ", hp='" + hp + '\'' +
-                ", engineCylinders='" + engineCylinders + '\'' +
-                ", transmission='" + transmission + '\'' +
-                ", type='" + type + '\'' +
-                ", driven='" + driven + '\'' +
-                ", numberOfDoors='" + numberOfDoors + '\'' +
-                ", market='" + market + '\'' +
-                ", vehicleSize='" + vehicleSize + '\'' +
-                ", vehicleStyle='" + vehicleStyle + '\'' +
-                ", highway='" + highway + '\'' +
-                ", mpg='" + mpg + '\'' +
-                ", cityMpg='" + cityMpg + '\'' +
-                ", popularity='" + popularity + '\'' +
-                ", msrp='" + msrp + '\'' +
-                '}';
+    public String get(String keyColumn) {
+        return " CarData.csv: " + switch (keyColumn) {
+            case "make" -> make;
+            case "model" -> model;
+            case "year" -> year;
+            case "engineFuelType" -> engineFuelType;
+            case "hp" -> hp;
+            case "engineCylinders" -> engineCylinders;
+            case "transmission" -> transmission;
+            case "driven" -> driven;
+            case "numberOfDoors" -> numberOfDoors;
+            case "market" -> market;
+            default -> "";
+        } + " Model: " + model;
     }
 }

@@ -1,4 +1,4 @@
-package polsl.stream.join.data.algorithm;
+package polsl.stream.join.data.algorithm.join;
 
 import polsl.stream.join.data.algorithm.join.Joiner;
 import polsl.stream.join.data.algorithm.join.MatchPredicate;
