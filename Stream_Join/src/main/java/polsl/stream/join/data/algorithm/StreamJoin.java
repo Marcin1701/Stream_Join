@@ -227,10 +227,44 @@ public class StreamJoin implements Join {
 
     @Override
     public List<String> thetaJoin(StreamModels firstStream, StreamModels secondStream) {
+        Supplier<Stream<?>> firstStreamSupplier = () -> csvReader.readDataFromFile(config.getFirstFile()).findActiveStream();
+        Supplier<Stream<?>> secondStreamSupplier = () -> csvReader.readDataFromFile(config.getSecondFile()).findActiveStream();
         this.getFieldNames();
         if (Boolean.FALSE.equals(this.checkJoinColumn())) {
-            return null;
+            return new ArrayList<>();
         }
-        return null;
+        List<String> returnedStream = new ArrayList<>();
+        firstStreamSupplier.get().forEach(firstStreamData -> {
+            try {
+                var firstDataStreamField = Class.forName(firstStreamData.getClass().getName()).getDeclaredField(config.getJoinColumn());
+                firstDataStreamField.setAccessible(true);
+                var firstValue = (String) firstDataStreamField.get(firstStreamData);
+                secondStreamSupplier.get().forEach(secondStreamData -> {
+                    try {
+                        var secondDataStreamField = Class.forName(secondStreamData.getClass().getName()).getDeclaredField(config.getJoinColumn());
+                        secondDataStreamField.setAccessible(true);
+                        var secondValue = (String) secondDataStreamField.get(secondStreamData);
+                        int evaluation;
+                        switch (config.getThetaJoinType()) {
+                            case "==": if (Objects.equals(firstValue, secondValue)) {
+                                returnedStream.add(firstStreamData + secondStreamData.toString());
+                            } break;
+                            case "<=", ">", ">=", "<": {
+                                evaluation = firstValue.compareTo(secondValue);
+                                if ((evaluation > 0 && config.getThetaJoinType().contains(">")) || (evaluation < 0 && config.getThetaJoinType().contains("<"))) {
+                                    returnedStream.add(firstStreamData + secondStreamData.toString());
+                                }
+                            } break;
+                            default:
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                });
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+        return returnedStream;
     }
 }
