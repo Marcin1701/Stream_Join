@@ -196,4 +196,14 @@ public class CarData {
             default -> "";
         } + " Model: " + model;
     }
+
+    @Override
+    public String toString() {
+        return "CarData{" +
+                "make='" + make + '\'' +
+                ", model='" + model + '\'' +
+                ", year='" + year + '\'' +
+                ", hp='" + hp + '\'' +
+                '}';
+    }
 }

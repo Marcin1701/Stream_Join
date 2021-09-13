@@ -18,6 +18,16 @@ public class StreamModels {
 
     private Stream<TestIncome> testIncomeStream;
 
+    private Stream<?> activeStream;
+
+    public Stream<?> getActiveStream() {
+        return activeStream;
+    }
+
+    public void setActiveStream(Stream<?> activeStream) {
+        this.activeStream = activeStream;
+    }
+
     public Stream<CarData> getCarDataStream() {
         return carDataStream;
     }
@@ -67,7 +77,10 @@ public class StreamModels {
     }
 
     public Stream<?> findActiveStream() {
-        if (this.carDataStream != null) {
+        if (this.activeStream != null) {
+            return this.activeStream;
+        }
+        else if (this.carDataStream != null) {
             return this.carDataStream;
         }
         else if (this.carDataSalesStream != null) {

@@ -7,9 +7,6 @@ import polsl.stream.join.data.CsvReader;
 import polsl.stream.join.data.model.Config;
 import reactor.core.publisher.Flux;
 
-import java.lang.reflect.InvocationTargetException;
-import java.time.Duration;
-import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 @Component
@@ -19,17 +16,14 @@ public class AlgorithmClass {
 
     private final CsvReader csvReader;
 
-    private final JoinOperator joinOperator;
-
     private StreamModels firstStreamModel;
 
     private StreamModels secondStreamModel;
 
     private Stream<?> returnedData;
 
-    public AlgorithmClass(CsvReader csvReader, JoinOperator joinOperator) {
+    public AlgorithmClass(CsvReader csvReader) {
         this.csvReader = csvReader;
-        this.joinOperator = joinOperator;
     }
 
     public Stream<?> initializeFlux(Config config) {
@@ -50,6 +44,9 @@ public class AlgorithmClass {
                 case "INNER" -> returnedData = streamJoin.innerJoin(this.firstStreamModel, this.secondStreamModel).stream();
                 case "RIGHT" -> returnedData = streamJoin.rightJoin(this.firstStreamModel, this.secondStreamModel).stream();
                 case "LEFT" -> returnedData = streamJoin.leftJoin(this.firstStreamModel, this.secondStreamModel).stream();
+                case "RIGHT OUTER" -> returnedData = streamJoin.rightOuterJoin(this.firstStreamModel, this.secondStreamModel).stream();
+                case "LEFT OUTER" -> returnedData = streamJoin.leftOuterJoin(this.firstStreamModel, this.secondStreamModel).stream();
+                case "THETA" -> returnedData = streamJoin.thetaJoin(this.firstStreamModel, this.secondStreamModel).stream();
                 default -> returnedData = null;
             }
         }

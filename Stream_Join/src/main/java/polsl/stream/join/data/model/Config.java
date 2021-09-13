@@ -32,6 +32,11 @@ public class Config {
      */
     private String joinColumn;
 
+    /**
+     * Condition of theta join
+     */
+    private String thetaJoinType;
+
     public String getFirstFile() {
         return firstFile;
     }
@@ -78,5 +83,13 @@ public class Config {
 
     public void setJoinColumn(String joinColumn) {
         this.joinColumn = joinColumn;
+    }
+
+    public String getThetaJoinType() {
+        return thetaJoinType;
+    }
+
+    public void setThetaJoinType(String thetaJoinType) {
+        this.thetaJoinType = thetaJoinType;
     }
 }
