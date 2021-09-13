@@ -188,4 +188,26 @@ public class CarDataSales {
             default -> "";
         } + " Model: " + model;
     }
+
+    @Override
+    public String toString() {
+        return "CarDataSales{" +
+                "manufacturer='" + manufacturer + '\'' +
+                ", model='" + model + '\'' +
+                ", salesINThousands='" + salesINThousands + '\'' +
+                ", yearResaleValue='" + yearResaleValue + '\'' +
+                ", vehicleType='" + vehicleType + '\'' +
+                ", priceInThousands='" + priceInThousands + '\'' +
+                ", engineSize='" + engineSize + '\'' +
+                ", hp='" + hp + '\'' +
+                ", wheelbase='" + wheelbase + '\'' +
+                ", width='" + width + '\'' +
+                ", length='" + length + '\'' +
+                ", curbWeight='" + curbWeight + '\'' +
+                ", fuelCapacity='" + fuelCapacity + '\'' +
+                ", fuelEfficiency='" + fuelEfficiency + '\'' +
+                ", latestLaunch='" + latestLaunch + '\'' +
+                ", powerPerfFactor='" + powerPerfFactor + '\'' +
+                '}';
+    }
 }

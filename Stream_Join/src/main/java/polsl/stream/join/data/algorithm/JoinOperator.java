@@ -25,7 +25,7 @@ public class JoinOperator {
 
     Stream<TestIncome> testIncomeStream;
 
-    private void configureAndValidateStream(Config config) {
+    public void configureAndValidateStream(Config config) {
         switch (config.getFirstFile()) {
             case "1_CarData.csv" -> carDataStream = (Stream<CarData>) this.first.findActiveStream();
             case "1_CarData_Sales.csv" -> carDataSalesStream = (Stream<CarDataSales>) this.first.findActiveStream();

@@ -15,7 +15,7 @@ public class ConfigService {
     private final AlgorithmClass algorithmClass;
 
     private final List<String> files = Arrays.stream(new String[]
-            { "INNER", "RIGHT OUTER", "LEFT OUTER", "THETA" }).toList();
+            { "INNER", "RIGHT OUTER", "LEFT OUTER", "LEFT", "RIGHT", "THETA" }).toList();
 
     public ConfigService(AlgorithmClass algorithmClass) {
         this.algorithmClass = algorithmClass;
