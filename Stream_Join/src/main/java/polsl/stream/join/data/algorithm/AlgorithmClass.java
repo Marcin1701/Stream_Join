@@ -30,15 +30,10 @@ public class AlgorithmClass {
         var streamJoin = new StreamJoin(config);
         Flux<StreamModels> firstDataStream = Flux.just(csvReader.readDataFromFile(config.getFirstFile()));
         Flux<StreamModels> secondDataStream = Flux.just(csvReader.readDataFromFile(config.getSecondFile()));
-        firstDataStream.subscribe(data -> {
-            this.firstStreamModel = data;
-            logger.info("First stream model initiailized");
-            logger.info(data.toString());
-        });
-        secondDataStream.subscribe(data -> {
-            this.secondStreamModel = data;
-            logger.info("Second stream model initialized - Starting " + config.getJoinType() + " on " + config.getJoinColumn());
-        });
+        firstDataStream.subscribe(data -> this.firstStreamModel = data);
+        secondDataStream.subscribe(data -> this.secondStreamModel = data);
+        logger.info("----- JOIN TYPE: " + config.getJoinType() + " -----");
+        logger.info("Joining " + config.getFirstFile() + " with " + config.getSecondFile());
         if (this.firstStreamModel != null && this.secondStreamModel != null) {
             switch (config.getJoinType()) {
                 case "INNER" -> returnedData = streamJoin.innerJoin(this.firstStreamModel, this.secondStreamModel).stream();

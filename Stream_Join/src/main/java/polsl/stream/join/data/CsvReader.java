@@ -23,7 +23,7 @@ public class CsvReader {
     private final List<String> files = Arrays.stream(new String[]
             {
                     "1_CarData.csv", "1_CarData_Sales.csv",
-                    "2_Food_Choices.csv", "2_FoodPreference.csv",
+                    "2_Food_Choices.csv", "2_Food_Preference.csv",
                     "3_Korea_Income_and_Welfare.csv", "3_Test_Income.csv"
             }).toList();
 
